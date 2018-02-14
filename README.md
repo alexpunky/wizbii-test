@@ -2,6 +2,10 @@
 
 This project is only a technical use test of the Wizbii API
 
+## TODO
+
+Refactor feeds list to make a feed component displaying one feed and have all the features to interact with it.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
