@@ -1,0 +1,35 @@
+.feeds {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+
+    article {
+        background-color: #FFFFFF;
+        border: 1px solid #DDDDDD;
+        border-radius: 7px;
+        padding: 20px;
+        margin: 15px 0;
+
+        .content {
+            .attachment {
+                background-color: #EFEFEF;
+                border: 1px solid #DDDDDD;
+                padding: 10px;
+                margin: 20px 0;
+
+                h3 {
+                    font-size: 80%;
+                }
+
+                img {
+                    width: 100%;
+                }
+
+                .attachment-content {
+                    margin-top: 15px;
+                    font-style: italic;
+                }
+            }
+        }
+    }
+}

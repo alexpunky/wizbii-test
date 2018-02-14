@@ -1,0 +1,57 @@
+<section class="feeds">
+    <article *ngIf="!feeds || !feeds.length">
+        <h2>Aucun post actuellement</h2>
+    </article>
+    <article *ngFor="let feed of feeds">
+        <h2>
+            <a [attr.href]="'/user/' + feed.poster.slug">
+                {{ feed.poster.displayName }}
+            </a>
+        </h2>
+
+        <div class="content">
+            <div class="message">
+                {{ feed.content }}
+            </div>
+            <div class="attachment" *ngIf="feed.attachment_content">
+                <div class="attachment-media">
+                    <h3>{{ feed.attachment_title }}</h3>
+                    <img [src]="feed.attachment_picture" alt="{{ feed.attachment_title }}"/>
+                        <div class="attachment-content">{{ feed.attachment_content }}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="tags" *ngIf="feed.tags && feed.tags.length">
+            <a [attr.href]="'/tag/' + tag.slug" *ngFor="let tag of feed.tags">#{{ tag.name }} </a>
+        </div>
+        <!-- End tags -->
+
+        <a href="#">Commentaires ({{ feed.comments.length }})</a>
+        <a href="#">Thanx ({{ feed.likes.length }})</a>
+
+        <!-- Comments -->
+        <div class="comments">
+            <ul>
+                <li *ngFor="let comment of feed.comments">
+                    <em>{{ comment.content }}</em> - TODO Comment (no feed woth comment actually)
+                </li>
+            </ul>
+
+            <form (submit)="comment(feed)">
+                <div class="container">
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="feed.currentComment" name="comment"
+                               class="form-control" placeholder="Ajouter un commentaire"
+                               (focus)="focusComment(feed)" (blur)="blurComment(feed)"/>
+                    </div>
+                    <div class="form-group" *ngIf="feed === this.currentCommentFeed || feed.currentComment">
+                        <button class="btn btn-primary">Commenter</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- End comments -->
+    </article>
+</section>
